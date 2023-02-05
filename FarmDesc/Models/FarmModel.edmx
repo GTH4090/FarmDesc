@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище mainModel" Provider="System.Data.SQLite.EF6" ProviderManifestToken="Data Source=E:\HACKERMAN\Repos\FarmDesc\FarmDesc\Databases\FarmDb.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AirSensorsLogs">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="integer" Nullable="false" />
+          <Property Name="temperature" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="humidity" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Devices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="State" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LandSensorLogs">
+          <Key>
+            <PropertyRef Name="Ident" />
+          </Key>
+          <Property Name="Ident" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="integer" Nullable="false" />
+          <Property Name="humidity" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Properties">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Value" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Хранилище mainModelContainer">
+          <EntitySet Name="AirSensorsLogs" EntityType="Self.AirSensorsLogs" store:Type="Tables" />
+          <EntitySet Name="Devices" EntityType="Self.Devices" store:Type="Tables" />
+          <EntitySet Name="LandSensorLogs" EntityType="Self.LandSensorLogs" store:Type="Tables" />
+          <EntitySet Name="Properties" EntityType="Self.Properties" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="mainModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AirSensorsLogs">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="temperature" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="humidity" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Devices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="State" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LandSensorLogs">
+          <Key>
+            <PropertyRef Name="Ident" />
+          </Key>
+          <Property Name="Ident" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="humidity" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Properties">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Value" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="mainEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AirSensorsLogs" EntityType="Self.AirSensorsLogs" />
+          <EntitySet Name="Devices" EntityType="Self.Devices" />
+          <EntitySet Name="LandSensorLogs" EntityType="Self.LandSensorLogs" />
+          <EntitySet Name="Properties" EntityType="Self.Properties" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище mainModelContainer" CdmEntityContainer="mainEntities">
+          <EntitySetMapping Name="AirSensorsLogs">
+            <EntityTypeMapping TypeName="mainModel.AirSensorsLogs">
+              <MappingFragment StoreEntitySet="AirSensorsLogs">
+                <ScalarProperty Name="ident" ColumnName="ident" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="temperature" ColumnName="temperature" />
+                <ScalarProperty Name="humidity" ColumnName="humidity" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Devices">
+            <EntityTypeMapping TypeName="mainModel.Devices">
+              <MappingFragment StoreEntitySet="Devices">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LandSensorLogs">
+            <EntityTypeMapping TypeName="mainModel.LandSensorLogs">
+              <MappingFragment StoreEntitySet="LandSensorLogs">
+                <ScalarProperty Name="Ident" ColumnName="Ident" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="humidity" ColumnName="humidity" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Properties">
+            <EntityTypeMapping TypeName="mainModel.Properties">
+              <MappingFragment StoreEntitySet="Properties">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
