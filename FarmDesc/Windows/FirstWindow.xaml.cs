@@ -57,6 +57,7 @@ namespace FarmDesc
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             timer.Start();
+            DateNow = DateTime.Now;
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)

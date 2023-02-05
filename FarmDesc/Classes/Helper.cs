@@ -11,6 +11,8 @@ namespace FarmDesc.Classes
     public static class Helper
     {
         public static mainEntities Db = new mainEntities();
+
+        public static DateTime DateNow;
         
         public static void Error(string error ="Ошибка БД")
         {

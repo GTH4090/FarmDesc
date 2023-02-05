@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:FarmDesc.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AvargePage">
+      Title="AvargePage" Loaded="Page_Loaded">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -20,7 +20,9 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <DataGrid x:Name="AvargeValue" Grid.Row="1">
-            
+            <DataGrid.Columns>
+
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </Page>

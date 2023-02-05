@@ -6,10 +6,12 @@
       xmlns:local="clr-namespace:FarmDesc.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="SecsorscontrolPage">
+      Title="SecsorscontrolPage" Loaded="Page_Loaded">
 
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -18,8 +20,37 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <GroupBox Header="Датчик" Grid.ColumnSpan="2">
-            <ComboBox x:Name="SensorCbx"/>
-        </GroupBox>
+        <DataGrid x:Name="Sensor1Datagrid" Grid.Row="1" Grid.Column="0" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding id}" Width="Auto"/>
+                <DataGridTextColumn Header="temperature" Binding="{Binding temperature}" Width="Auto"/>
+                <DataGridTextColumn Header="humidity" Binding="{Binding humidity}" Width="Auto"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding date}" Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="Sensor2Datagrid" Grid.Row="1" Grid.Column="1" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding id}" Width="Auto"/>
+                <DataGridTextColumn Header="temperature" Binding="{Binding temperature}" Width="Auto" />
+                <DataGridTextColumn Header="humidity" Binding="{Binding humidity}" Width="Auto"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding date}" Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="Sensor3Datagrid" Grid.Row="1" Grid.Column="2" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding id}" Width="Auto"/>
+                <DataGridTextColumn Header="temperature" Binding="{Binding temperature}" Width="Auto"/>
+                <DataGridTextColumn Header="humidity" Binding="{Binding humidity}" Width="Auto"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding date}" Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="Sensor4Datagrid" Grid.Row="1" Grid.Column="3" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding id}" Width="Auto"/>
+                <DataGridTextColumn Header="temperature" Binding="{Binding temperature}" Width="Auto"/>
+                <DataGridTextColumn Header="humidity" Binding="{Binding humidity}" Width="Auto"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding date}" Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>
