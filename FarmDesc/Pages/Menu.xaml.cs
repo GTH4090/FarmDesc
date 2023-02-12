@@ -37,7 +37,7 @@ namespace FarmDesc.Pages
 
         private void WinControlBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new WinControlPage());
+            NavigationService.Navigate(new PropertiesPage());
         }
 
         private void WateringControl_Click(object sender, RoutedEventArgs e)

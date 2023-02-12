@@ -103,7 +103,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\WinControlPage.xaml">
+    <Page Include="Pages\PropertiesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -159,8 +159,8 @@
     <Compile Include="Pages\WateringControlPage.xaml.cs">
       <DependentUpon>WateringControlPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\WinControlPage.xaml.cs">
-      <DependentUpon>WinControlPage.xaml</DependentUpon>
+    <Compile Include="Pages\PropertiesPage.xaml.cs">
+      <DependentUpon>PropertiesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\FirstWindow.xaml.cs">
       <DependentUpon>FirstWindow.xaml</DependentUpon>

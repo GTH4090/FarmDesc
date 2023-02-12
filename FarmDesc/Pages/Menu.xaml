@@ -12,7 +12,7 @@
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button x:Name="AvargeBtn" Content="Среднее значения датчиков" Width="Auto" Click="AvargeBtn_Click"/>
             <Button x:Name="SensorsControlBtn" Content="Контроль датчитков" Width="Auto" Click="SensorsControlBtn_Click"/>
-            <Button x:Name="WinControlBtn" Content="Контроль форточки" Width="Auto" Click="WinControlBtn_Click"/>
+            <Button x:Name="WinControlBtn" Content="Настройки" Width="Auto" Click="WinControlBtn_Click"/>
             <Button x:Name="WateringControl" Content="Контроль полива" Width="Auto" Click="WateringControl_Click"/>
             <Button x:Name="GeneralWetControll" Content="контроль общей влажности" Width="Auto" Click="GeneralWetControll_Click"/>
         </StackPanel>
