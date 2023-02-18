@@ -40,6 +40,17 @@ namespace FarmDesc
             Db.AirSensorsLogs.AddRange(GetAirSensorsData());
             Db.LandSensorLogs.AddRange(GetLandSensorsData());
             Db.SaveChanges();
+            AvargeAirLogs log = new AvargeAirLogs();
+            log.Date = Db.AirSensorsLogs.Where(el => el.id == 1 && el.date >= DateNow).OrderByDescending(el => el.date).FirstOrDefault().date;
+            var sens1 = Db.AirSensorsLogs.Where(el => el.id == 1).OrderByDescending(el => el.date).FirstOrDefault();
+            var sens2 = Db.AirSensorsLogs.Where(el => el.id == 2).OrderByDescending(el => el.date).FirstOrDefault();
+            var sens3 = Db.AirSensorsLogs.Where(el => el.id == 3).OrderByDescending(el => el.date).FirstOrDefault();
+            var sens4 = Db.AirSensorsLogs.Where(el => el.id == 4).OrderByDescending(el => el.date).FirstOrDefault();
+
+            log.humidity = (sens1.humidity + sens2.humidity + sens3.humidity + sens4.humidity) / 4;
+            log.temperature = (sens1.temperature + sens2.temperature + sens3.temperature + sens4.temperature) / 4;
+
+            Db.AvargeAirLogs.Add(log);
         }
 
         private void MainFrame_Navigated(object sender, NavigationEventArgs e)

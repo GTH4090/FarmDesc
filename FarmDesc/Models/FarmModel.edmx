@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище mainModel" Provider="System.Data.SQLite.EF6" ProviderManifestToken="Data Source=E:\HACKERMAN\Repos\FarmDesc\FarmDesc\Databases\FarmDb.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище mainModel" Provider="System.Data.SQLite.EF6" ProviderManifestToken="Data Source=E:\HACKERMAN\Repos\FarmDesc\FarmDesc\Databases\FarmDb.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AirSensorsLogs">
           <Key>
             <PropertyRef Name="ident" />
@@ -14,6 +14,15 @@
           <Property Name="temperature" Type="decimal" Precision="10" Scale="4" Nullable="false" />
           <Property Name="humidity" Type="decimal" Precision="10" Scale="4" Nullable="false" />
           <Property Name="date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AvargeAirLogs">
+          <Key>
+            <PropertyRef Name="Ident" />
+          </Key>
+          <Property Name="Ident" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="temperature" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="humidity" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Devices">
           <Key>
@@ -42,12 +51,12 @@
         </EntityType>
         <EntityContainer Name="Хранилище mainModelContainer">
           <EntitySet Name="AirSensorsLogs" EntityType="Self.AirSensorsLogs" store:Type="Tables" />
+          <EntitySet Name="AvargeAirLogs" EntityType="Self.AvargeAirLogs" store:Type="Tables" />
           <EntitySet Name="Devices" EntityType="Self.Devices" store:Type="Tables" />
           <EntitySet Name="LandSensorLogs" EntityType="Self.LandSensorLogs" store:Type="Tables" />
           <EntitySet Name="Properties" EntityType="Self.Properties" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="mainModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -91,7 +100,17 @@
           <EntitySet Name="Devices" EntityType="Self.Devices" />
           <EntitySet Name="LandSensorLogs" EntityType="Self.LandSensorLogs" />
           <EntitySet Name="Properties" EntityType="Self.Properties" />
+          <EntitySet Name="AvargeAirLogs" EntityType="mainModel.AvargeAirLogs" />
         </EntityContainer>
+        <EntityType Name="AvargeAirLogs">
+          <Key>
+            <PropertyRef Name="Ident" />
+          </Key>
+          <Property Name="Ident" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="temperature" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="humidity" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -134,6 +153,16 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AvargeAirLogs">
+            <EntityTypeMapping TypeName="mainModel.AvargeAirLogs">
+              <MappingFragment StoreEntitySet="AvargeAirLogs">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="humidity" ColumnName="humidity" />
+                <ScalarProperty Name="temperature" ColumnName="temperature" />
+                <ScalarProperty Name="Ident" ColumnName="Ident" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

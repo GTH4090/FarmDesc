@@ -19,10 +19,15 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="AvargeValue" Grid.Row="1">
-            <DataGrid.Columns>
-
-            </DataGrid.Columns>
-        </DataGrid>
+        
+            <DataGrid x:Name="SensorsDatagrid" Grid.Row="1" Grid.Column="0" IsReadOnly="True" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    
+                    <DataGridTextColumn Header="temperature" Binding="{Binding temperature}" Width="Auto"/>
+                    <DataGridTextColumn Header="humidity" Binding="{Binding humidity}" Width="Auto"/>
+                    <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="Auto"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        
     </Grid>
 </Page>

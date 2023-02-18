@@ -120,6 +120,9 @@
     <Compile Include="Models\AirSensorsLogs.cs">
       <DependentUpon>FarmModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AvargeAirLogs.cs">
+      <DependentUpon>FarmModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Devices.cs">
       <DependentUpon>FarmModel.tt</DependentUpon>
     </Compile>

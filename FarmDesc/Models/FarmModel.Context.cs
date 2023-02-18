@@ -29,5 +29,6 @@ namespace FarmDesc.Models
         public virtual DbSet<Devices> Devices { get; set; }
         public virtual DbSet<LandSensorLogs> LandSensorLogs { get; set; }
         public virtual DbSet<Properties> Properties { get; set; }
+        public virtual DbSet<AvargeAirLogs> AvargeAirLogs { get; set; }
     }
 }
