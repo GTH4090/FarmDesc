@@ -15,11 +15,11 @@
                 <TextBox x:Name="TempTbx"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Content="Влажность воздуха"/>
+                <Label Content="Влажность воздуха" Width="Auto"/>
                 <TextBox x:Name="AirHumTbx"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Content="Влажность почвы"/>
+                <Label Content="Влажность почвы" Width="Auto"/>
                 <TextBox x:Name="LandHumTbx"/>
             </StackPanel>
             <Button x:Name="SaveBtn" Content="Сохранить" Click="SaveBtn_Click"/>

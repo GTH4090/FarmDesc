@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FarmDesc.Pages"
+      xmlns:chart="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SecsorscontrolPage" Loaded="Page_Loaded">
@@ -17,6 +18,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -52,5 +54,17 @@
                 <DataGridTextColumn Header="Date" Binding="{Binding date}" Width="Auto"/>
             </DataGrid.Columns>
         </DataGrid>
+
+        <WindowsFormsHost Grid.Row="2" Grid.ColumnSpan="4">
+            <chart:Chart x:Name="SensorsGraph">
+                <chart:Chart.Legends>
+                    <chart:Legend>
+                        
+                    </chart:Legend>
+                </chart:Chart.Legends>
+            </chart:Chart>
+        </WindowsFormsHost>
+          
+        
     </Grid>
 </Page>
