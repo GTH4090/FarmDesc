@@ -85,7 +85,7 @@ namespace FarmDesc.Pages
                 SensorsGraph.Series.Add(ser4Hum);
                 SensorsGraph.Series[0].XValueType = ChartValueType.DateTime;
 
-                SensorsGraph.ChartAreas[0].AxisX.LabelStyle.Format = "yyyy-MM-dd-hh-mm-ss";
+                SensorsGraph.ChartAreas[0].AxisX.LabelStyle.Format = "yyyy-MM-dd hh:mm:ss";
 
             }
             catch (Exception ex)

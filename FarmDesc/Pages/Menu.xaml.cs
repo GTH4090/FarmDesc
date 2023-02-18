@@ -47,7 +47,7 @@ namespace FarmDesc.Pages
 
         private void GeneralWetControll_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new LandSensorsControlPage());
         }
     }
 }
