@@ -169,6 +169,7 @@ namespace FarmDesc.Pages
 
             DataLoad();
             GraphGen();
+            GraphData();
 
             timer.Start();
         }
