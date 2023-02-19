@@ -51,6 +51,7 @@ namespace FarmDesc
             log.temperature = (sens1.temperature + sens2.temperature + sens3.temperature + sens4.temperature) / 4;
 
             Db.AvargeAirLogs.Add(log);
+            Db.SaveChanges();
         }
 
         private void MainFrame_Navigated(object sender, NavigationEventArgs e)

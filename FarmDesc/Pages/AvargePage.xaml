@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:chart="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
       xmlns:local="clr-namespace:FarmDesc.Pages"
+      
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AvargePage" Loaded="Page_Loaded">
@@ -20,14 +21,25 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
-            <DataGrid x:Name="SensorsDatagrid" Grid.Row="1" Grid.Column="0" IsReadOnly="True" AutoGenerateColumns="False">
-                <DataGrid.Columns>
-                    
-                    <DataGridTextColumn Header="temperature" Binding="{Binding temperature}" Width="Auto"/>
-                    <DataGridTextColumn Header="humidity" Binding="{Binding humidity}" Width="Auto"/>
-                    <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="Auto"/>
+        <DataGrid x:Name="SensorsDatagrid" Grid.Row="1" Grid.Column="0" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                
+                <DataGridTextColumn Header="temperature" Binding="{Binding temperature}" Width="Auto"/>
+                <DataGridTextColumn Header="humidity" Binding="{Binding humidity}" Width="Auto"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="Auto"/>
                 </DataGrid.Columns>
-            </DataGrid>
-        
+        </DataGrid>
+
+        <WindowsFormsHost Grid.Column="1" Grid.Row="1">
+            <chart:Chart x:Name="MainChart">
+                <chart:Chart.Legends>
+                    <chart:Legend>
+                        
+                    </chart:Legend>
+                </chart:Chart.Legends>
+            </chart:Chart>
+        </WindowsFormsHost>
+
+        <Button x:Name="WinStatBtn" Grid.Row="2" Grid.Column="0" Click="WinStatBtn_Click"/>
     </Grid>
 </Page>
