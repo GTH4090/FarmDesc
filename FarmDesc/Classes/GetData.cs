@@ -58,6 +58,9 @@ namespace FarmDesc.Classes
             {
                 string updateurl = $"https://dt.miet.ru/ppo_it/api/fork_drive?state={state}";
                 var request = new HttpRequestMessage(new HttpMethod("PATCH"), updateurl);
+                string content = $"{{\"state\": {state}}}";
+                //request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("X-Auth-Token", "Token");
+                request.Content = new StringContent(content, System.Text.Encoding.UTF8, "application/json");
                 var response = HttpClient.SendAsync(request);
                 return response.Result.StatusCode == HttpStatusCode.OK;
             }
