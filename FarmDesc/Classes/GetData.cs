@@ -68,6 +68,23 @@ namespace FarmDesc.Classes
             }
             
         }
+        public static bool HumState(int state)
+        {
+
+            try
+            {
+                string updateurl = $"https://dt.miet.ru/ppo_it/api/total_hum?state={state}";
+                var request = new HttpRequestMessage(new HttpMethod("PATCH"), updateurl);
+                var response = HttpClient.SendAsync(request);
+                return response.Result.StatusCode == HttpStatusCode.OK;
+            }
+            catch (Exception ex)
+            {
+                Error(ex.Message);
+                return false;
+            }
+
+        }
 
 
     }

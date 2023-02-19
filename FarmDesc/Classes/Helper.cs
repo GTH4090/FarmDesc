@@ -13,6 +13,8 @@ namespace FarmDesc.Classes
         public static mainEntities Db = new mainEntities();
 
         public static DateTime DateNow;
+
+        public static bool IsExtramod = false;
         
         public static void Error(string error ="Ошибка БД")
         {

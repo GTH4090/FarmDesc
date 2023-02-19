@@ -81,5 +81,20 @@ namespace FarmDesc
         {
             Close();
         }
+
+        private void ExtraBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if(IsExtramod == false)
+            {
+                IsExtramod = true;
+                MessageBox.Show("Включён режим экстренного управления");
+            }
+            else
+            {
+                IsExtramod = false;
+                MessageBox.Show("Выключен режим экстренного управления");
+            }
+
+        }
     }
 }

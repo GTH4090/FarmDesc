@@ -94,7 +94,7 @@ namespace FarmDesc.Pages
                 if(Db.Devices.FirstOrDefault(el => el.Id == 8).State == false)
                 {
                     WinStatBtn.Content = "Открыть форточку";
-                    if(Db.AvargeAirLogs.OrderByDescending(el => el.Date).FirstOrDefault().temperature > Db.Properties.FirstOrDefault(el => el.Id == 1).Value)
+                    if(Db.AvargeAirLogs.OrderByDescending(el => el.Date).FirstOrDefault().temperature > Db.Properties.FirstOrDefault(el => el.Id == 1).Value || IsExtramod == true)
                     {
                         WinStatBtn.IsEnabled = true;
                     }
@@ -107,6 +107,24 @@ namespace FarmDesc.Pages
                 {
                     WinStatBtn.Content = "Закрыть форточку";
                     WinStatBtn.IsEnabled = true;
+                }
+
+                if (Db.Devices.FirstOrDefault(el => el.Id == 1).State == false)
+                {
+                    HumStatBtn.Content = "Открыть систему увлажнения";
+                    if (Db.AvargeAirLogs.OrderByDescending(el => el.Date).FirstOrDefault().humidity < Db.Properties.FirstOrDefault(el => el.Id == 2).Value || IsExtramod == true)
+                    {
+                        HumStatBtn.IsEnabled = true;
+                    }
+                    else
+                    {
+                        HumStatBtn.IsEnabled = false;
+                    }
+                }
+                else
+                {
+                    HumStatBtn.Content = "Закрыть систему увлажнения";
+                    HumStatBtn.IsEnabled = true;
                 }
             }
             catch (Exception ex)
@@ -150,13 +168,54 @@ namespace FarmDesc.Pages
                         Db.Devices.FirstOrDefault(el => el.Id == 8).State = false;
                         Db.SaveChanges();
                         BtnsStat();
-                        MessageBox.Show("Форточка закрытия");
+                        MessageBox.Show("Форточка закрыта");
                     }
                     else
                     {
                         Error("Ошибка закрытия форточки");
                     }
                     
+                }
+            }
+            catch (Exception ex)
+            {
+                Error(ex.Message);
+            }
+        }
+
+        private void HumStatBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (HumStatBtn.Content == "Открыть систему увлажнения")
+                {
+                    if (HumState(1) == true)
+                    {
+                        Db.Devices.FirstOrDefault(el => el.Id == 1).State = true;
+                        Db.SaveChanges();
+                        BtnsStat();
+                        MessageBox.Show("Система увлажнения открыта");
+                    }
+                    else
+                    {
+                        Error("Ошибка системы увлажнения");
+                    }
+
+                }
+                else
+                {
+                    if (HumState(0) == true)
+                    {
+                        Db.Devices.FirstOrDefault(el => el.Id == 1).State = false;
+                        Db.SaveChanges();
+                        BtnsStat();
+                        MessageBox.Show("Система увлажнения закрыта");
+                    }
+                    else
+                    {
+                        Error("Ошибка системы увлажнения");
+                    }
+
                 }
             }
             catch (Exception ex)

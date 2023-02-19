@@ -41,5 +41,7 @@
         </WindowsFormsHost>
 
         <Button x:Name="WinStatBtn" Grid.Row="2" Grid.Column="0" Click="WinStatBtn_Click"/>
+        <Button x:Name="HumStatBtn" Grid.Row="2" Grid.Column="1" Click="HumStatBtn_Click" Width="Auto"/>
+        
     </Grid>
 </Page>
