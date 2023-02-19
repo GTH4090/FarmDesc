@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using static FarmDesc.Classes.Helper;
+using static FarmDesc.Classes.GetData;
 using FarmDesc.Models;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -161,7 +162,7 @@ namespace FarmDesc.Pages
         {
             DataLoad();
             GraphData();
-
+            LoadBtns();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -170,8 +171,375 @@ namespace FarmDesc.Pages
             DataLoad();
             GraphGen();
             GraphData();
+            LoadBtns();
 
             timer.Start();
+        }
+
+        private void LoadBtns()
+        {
+
+            try
+            {
+                if (Db.Devices.FirstOrDefault(el => el.Id == 7).State == false)
+                {
+                    Water1Btn.Content = "Открыть полив 1";
+                    if (Db.LandSensorLogs.Where(el => el.id == 1).OrderByDescending(el => el.date).FirstOrDefault().humidity < Db.Properties.FirstOrDefault(el => el.Id == 3).Value || IsExtramod == true)
+                    {
+                        Water1Btn.IsEnabled = true;
+                    }
+                    else
+                    {
+                        Water1Btn.IsEnabled = false;
+                    }
+                }
+                else
+                {
+                    Water1Btn.Content = "Закрыть полив 1";
+                    Water1Btn.IsEnabled = true;
+                }
+
+                if (Db.Devices.FirstOrDefault(el => el.Id == 6).State == false)
+                {
+                    Water2Btn.Content = "Открыть полив 2";
+                    if (Db.LandSensorLogs.Where(el => el.id == 2).OrderByDescending(el => el.date).FirstOrDefault().humidity < Db.Properties.FirstOrDefault(el => el.Id == 3).Value || IsExtramod == true)
+                    {
+                        Water2Btn.IsEnabled = true;
+                    }
+                    else
+                    {
+                        Water2Btn.IsEnabled = false;
+                    }
+                }
+                else
+                {
+                    Water2Btn.Content = "Закрыть полив 2";
+                    Water2Btn.IsEnabled = true;
+                }
+
+                if (Db.Devices.FirstOrDefault(el => el.Id == 5).State == false)
+                {
+                    Water3Btn.Content = "Открыть полив 3";
+                    if (Db.LandSensorLogs.Where(el => el.id == 3).OrderByDescending(el => el.date).FirstOrDefault().humidity < Db.Properties.FirstOrDefault(el => el.Id == 3).Value || IsExtramod == true)
+                    {
+                        Water3Btn.IsEnabled = true;
+                    }
+                    else
+                    {
+                        Water3Btn.IsEnabled = false;
+                    }
+                }
+                else
+                {
+                    Water3Btn.Content = "Закрыть полив 3";
+                    Water3Btn.IsEnabled = true;
+                }
+
+                if (Db.Devices.FirstOrDefault(el => el.Id == 4).State == false)
+                {
+                    Water4Btn.Content = "Открыть полив 4";
+                    if (Db.LandSensorLogs.Where(el => el.id == 4).OrderByDescending(el => el.date).FirstOrDefault().humidity < Db.Properties.FirstOrDefault(el => el.Id == 3).Value || IsExtramod == true)
+                    {
+                        Water4Btn.IsEnabled = true;
+                    }
+                    else
+                    {
+                        Water4Btn.IsEnabled = false;
+                    }
+                }
+                else
+                {
+                    Water4Btn.Content = "Закрыть полив 4";
+                    Water4Btn.IsEnabled = true;
+                }
+
+                if (Db.Devices.FirstOrDefault(el => el.Id == 3).State == false)
+                {
+                    Water5Btn.Content = "Открыть полив 5";
+                    if (Db.LandSensorLogs.Where(el => el.id == 5).OrderByDescending(el => el.date).FirstOrDefault().humidity < Db.Properties.FirstOrDefault(el => el.Id == 3).Value || IsExtramod == true)
+                    {
+                        Water5Btn.IsEnabled = true;
+                    }
+                    else
+                    {
+                        Water5Btn.IsEnabled = false;
+                    }
+                }
+                else
+                {
+                    Water5Btn.Content = "Закрыть полив 5";
+                    Water5Btn.IsEnabled = true;
+                }
+
+                if (Db.Devices.FirstOrDefault(el => el.Id == 2).State == false)
+                {
+                    Water6Btn.Content = "Открыть полив 6";
+                    if (Db.LandSensorLogs.Where(el => el.id == 6).OrderByDescending(el => el.date).FirstOrDefault().humidity < Db.Properties.FirstOrDefault(el => el.Id == 3).Value || IsExtramod == true)
+                    {
+                        Water6Btn.IsEnabled = true;
+                    }
+                    else
+                    {
+                        Water6Btn.IsEnabled = false;
+                    }
+                }
+                else
+                {
+                    Water6Btn.Content = "Закрыть полив 6";
+                    Water6Btn.IsEnabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Error(ex.Message);
+            }
+        }
+
+        private void Water1Btn_Click(object sender, RoutedEventArgs e)
+        {
+
+            try
+            {
+                if (Water1Btn.Content == "Открыть полив 1")
+                {
+                    if (WindowState(1) == true)
+                    {
+                        Db.Devices.FirstOrDefault(el => el.Id == 7).State = true;
+                        Db.SaveChanges();
+                        LoadBtns();
+                        MessageBox.Show("Полив открыт");
+                    }
+                    else
+                    {
+                        Error("Ошибка открытия полива");
+                    }
+
+                }
+                else
+                {
+                    if (WindowState(0) == true)
+                    {
+                        Db.Devices.FirstOrDefault(el => el.Id == 7).State = false;
+                        Db.SaveChanges();
+                        LoadBtns();
+                        MessageBox.Show("Полив закрыт");
+                    }
+                    else
+                    {
+                        Error("Ошибка закрытия полива");
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Error(ex.Message);
+            }
+        }
+
+        private void Water2Btn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (Water2Btn.Content == "Открыть полив 2")
+                {
+                    if (WindowState(1) == true)
+                    {
+                        Db.Devices.FirstOrDefault(el => el.Id == 6).State = true;
+                        Db.SaveChanges();
+                        LoadBtns();
+                        MessageBox.Show("Полив открыт");
+                    }
+                    else
+                    {
+                        Error("Ошибка открытия полива");
+                    }
+
+                }
+                else
+                {
+                    if (WindowState(0) == true)
+                    {
+                        Db.Devices.FirstOrDefault(el => el.Id == 6).State = false;
+                        Db.SaveChanges();
+                        LoadBtns();
+                        MessageBox.Show("Полив закрыт");
+                    }
+                    else
+                    {
+                        Error("Ошибка закрытия полива");
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Error(ex.Message);
+            }
+        }
+
+        private void Water3Btn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (Water3Btn.Content == "Открыть полив 3")
+                {
+                    if (WindowState(1) == true)
+                    {
+                        Db.Devices.FirstOrDefault(el => el.Id == 5).State = true;
+                        Db.SaveChanges();
+                        LoadBtns();
+                        MessageBox.Show("Полив открыт");
+                    }
+                    else
+                    {
+                        Error("Ошибка открытия полива");
+                    }
+
+                }
+                else
+                {
+                    if (WindowState(0) == true)
+                    {
+                        Db.Devices.FirstOrDefault(el => el.Id == 5).State = false;
+                        Db.SaveChanges();
+                        LoadBtns();
+                        MessageBox.Show("Полив закрыт");
+                    }
+                    else
+                    {
+                        Error("Ошибка закрытия полива");
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Error(ex.Message);
+            }
+        }
+
+        private void Water4Btn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (Water4Btn.Content == "Открыть полив 4")
+                {
+                    if (WindowState(1) == true)
+                    {
+                        Db.Devices.FirstOrDefault(el => el.Id == 4).State = true;
+                        Db.SaveChanges();
+                        LoadBtns();
+                        MessageBox.Show("Полив открыт");
+                    }
+                    else
+                    {
+                        Error("Ошибка открытия полива");
+                    }
+
+                }
+                else
+                {
+                    if (WindowState(0) == true)
+                    {
+                        Db.Devices.FirstOrDefault(el => el.Id == 4).State = false;
+                        Db.SaveChanges();
+                        LoadBtns();
+                        MessageBox.Show("Полив закрыт");
+                    }
+                    else
+                    {
+                        Error("Ошибка закрытия полива");
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Error(ex.Message);
+            }
+        }
+
+        private void Water5Btn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (Water5Btn.Content == "Открыть полив 5")
+                {
+                    if (WindowState(1) == true)
+                    {
+                        Db.Devices.FirstOrDefault(el => el.Id == 3).State = true;
+                        Db.SaveChanges();
+                        LoadBtns();
+                        MessageBox.Show("Полив открыт");
+                    }
+                    else
+                    {
+                        Error("Ошибка открытия полива");
+                    }
+
+                }
+                else
+                {
+                    if (WindowState(0) == true)
+                    {
+                        Db.Devices.FirstOrDefault(el => el.Id == 3).State = false;
+                        Db.SaveChanges();
+                        LoadBtns();
+                        MessageBox.Show("Полив закрыт");
+                    }
+                    else
+                    {
+                        Error("Ошибка закрытия полива");
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Error(ex.Message);
+            }
+        }
+
+        private void Water6Btn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (Water6Btn.Content == "Открыть полив 6")
+                {
+                    if (WindowState(1) == true)
+                    {
+                        Db.Devices.FirstOrDefault(el => el.Id == 2).State = true;
+                        Db.SaveChanges();
+                        LoadBtns();
+                        MessageBox.Show("Полив открыт");
+                    }
+                    else
+                    {
+                        Error("Ошибка открытия полива");
+                    }
+
+                }
+                else
+                {
+                    if (WindowState(0) == true)
+                    {
+                        Db.Devices.FirstOrDefault(el => el.Id == 2).State = false;
+                        Db.SaveChanges();
+                        LoadBtns();
+                        MessageBox.Show("Полив закрыт");
+                    }
+                    else
+                    {
+                        Error("Ошибка закрытия полива");
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Error(ex.Message);
+            }
         }
     }
 }

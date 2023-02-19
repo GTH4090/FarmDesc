@@ -14,7 +14,7 @@
             <Button x:Name="SensorsControlBtn" Content="Контроль датчитков воздуха" Width="Auto" Click="SensorsControlBtn_Click"/>
             <Button x:Name="GeneralWetControll" Content="Контроль датчиков земли" Width="Auto" Click="GeneralWetControll_Click"/>
             <Button x:Name="WinControlBtn" Content="Настройки" Width="Auto" Click="WinControlBtn_Click"/>
-            <Button x:Name="WateringControl" Content="Контроль полива" Width="Auto" Click="WateringControl_Click"/>
+            
             
         </StackPanel>
     </Grid>

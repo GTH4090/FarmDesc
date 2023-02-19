@@ -40,10 +40,7 @@ namespace FarmDesc.Pages
             NavigationService.Navigate(new PropertiesPage());
         }
 
-        private void WateringControl_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new WateringControlPage());
-        }
+        
 
         private void GeneralWetControll_Click(object sender, RoutedEventArgs e)
         {
