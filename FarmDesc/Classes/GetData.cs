@@ -56,7 +56,7 @@ namespace FarmDesc.Classes
 
             try
             {
-                string updateurl = $"https://dt.miet.ru/ppo_it/api/fork_drive";
+                string updateurl = $"https://dt.miet.ru/ppo_it/api/fork_drive?state={state}";
                 var request = new HttpRequestMessage(new HttpMethod("PATCH"), updateurl);
                 string content = $"{{\"state\": {state}}}";
                 //request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("X-Auth-Token", "Token");
